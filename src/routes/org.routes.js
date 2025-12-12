@@ -3,14 +3,12 @@ const {
   createOrganization,
   getOrganizations,
 } = require('../controllers/org.controller');
-const checkAuth = require('../middleware/auth')
+const checkAuth = require('../middleware/auth');
 
+const router = express.Router();
 
-const router = express.Router()
+router.get('/', checkAuth, getOrganizations);
 
+router.post('/', checkAuth, createOrganization);
 
-router.get('/', checkAuth, getOrganizations)
-
-router.post('/', checkAuth, createOrganization)
-
-module.exports = router
+module.exports = router;
